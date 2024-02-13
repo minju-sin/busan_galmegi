@@ -1,4 +1,9 @@
 // ./MainHeader.js
+/*
+width: 100%;  너비를 100%로 설정하여 화면에 맞춤 
+max-width: 1440px;  최대 너비를 1440px로 제한 
+margin: 0 auto;  좌우 여백을 자동으로 설정하여 가운데 정렬 
+*/
 
 import React from "react";
 import { styled } from 'styled-components';
@@ -9,7 +14,7 @@ import profileImage from '../images/profile.svg';
 const StyledMainHeader = styled.div`
     display: flex;
     width: 100%; /* 너비를 100%로 설정하여 화면에 맞춤 */
-    max-width: 1440px; /* 최대 너비를 1440px로 제한 */
+    //max-width: 1440px; /* 최대 너비를 1440px로 제한 */
     height: 127px;
     margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
     align-items: center;
@@ -20,7 +25,7 @@ const StyledMainHeader = styled.div`
 /* 헤더 로고 p */
 const StyledMainLogo = styled.p`
     width: 100%; /* 너비를 100%로 설정하여 화면에 맞춤 */
-    max-width: 1440px; /* 최대 너비를 1440px로 제한 */
+    //max-width: 1440px; /* 최대 너비를 1440px로 제한 */
     margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
     width: 641px;
     color: #D00F31;
@@ -41,7 +46,7 @@ const StyledLogo = styled.img`
 /* 네비게이션 div */
 const StyledNavi = styled.div`
     width: 100%; /* 너비를 100%로 설정하여 화면에 맞춤 */
-    max-width: 1440px; /* 최대 너비를 1440px로 제한 */
+    //max-width: 1440px; /* 최대 너비를 1440px로 제한 */
     margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
     flex-shrink: 0;
     display: flex;
