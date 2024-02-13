@@ -11,24 +11,15 @@ const StyledFooterWrapper = styled.div`
     background-color: #EEEEEE;
 `;
 
-const FooterLogo = styled.p`
-    text-align: center;
-    font-family: "Regular";
-    font-size: 40px;
-`;
 
 
-const Footer = ({ }) => {
+
+const Sns = ({ }) => {
     return (
         <>
-        <StyledFooterWrapper>
-            <FooterLogo>
-            롯데 자이언츠 팬들이 편하게 소통할 수 있는 공간을 직접 만듦으로써 풀스택 공부
-            </FooterLogo>
-            
-        </StyledFooterWrapper>
+        <p>sns</p>
         </>
     );
 };
 
-export default Footer;
+export default Sns;
