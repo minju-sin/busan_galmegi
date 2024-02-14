@@ -23,8 +23,25 @@ const Intro = () => {
         <>
         <StyledIntroWrapper>
             <ButtonGroup variant="contained" aria-label="Basic button group">
-                <Button onClick={() => handleButtonClick("사직구장")}>사직구장</Button>
-                <Button onClick={() => handleButtonClick("문수구장")}>문수구장</Button>
+                <Button 
+                    onClick={() => handleButtonClick("사직구장")}
+                    sx={{ backgroundColor: '#041E42', color: 'white', '&:hover': { backgroundColor: '#303f9f' }, fontFamily:"Regular",
+                    width: '150px',
+                    height: '50px'
+                    }}
+                >
+                    사직구장
+                </Button>
+                <Button 
+                    onClick={() => handleButtonClick("문수구장")}
+                    sx={{ backgroundColor: '#D00F31', color: 'white', '&:hover': { backgroundColor: '#d32f2f' },
+                    fontFamily:"Regular",
+                    width: '150px',
+                    height: '50px'
+                    }}
+                >
+                    문수구장
+                </Button>
             </ButtonGroup>
         </StyledIntroWrapper>
             {/* 버튼 클릭하면 구장 소개 보여줌 */}
