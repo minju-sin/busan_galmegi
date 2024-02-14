@@ -10,7 +10,7 @@ const MaTalk = ({ }) => {
         <div>
             <StyledTitle>마!톡</StyledTitle>
             {/* 테이블 형태의 글 목록 나열 */}
-            <a href="/MaTalkWrite"><Button variant="contained">글쓰기</Button></a>
+            <a href="/maTalk/write"><Button variant="contained">글쓰기</Button></a>
         </div>
     );
 };

@@ -77,9 +77,9 @@ const MainHeader = ({ }) => {
 
         <StyledNavi>
             <StyledNavia href="/">미디어</StyledNavia>
-            <StyledNavia href="/Intro">소개</StyledNavia>
+            <StyledNavia href="/intro">소개</StyledNavia>
             <StyledNavia href="https://www.giantsclub.com/html/?pcode=257">경기/중계</StyledNavia>
-            <StyledNavia href="/MaTalk">마!톡</StyledNavia>
+            <StyledNavia href="/maTalk">마!톡</StyledNavia>
             <StyledNavia href="https://ticket.giantsclub.com/loginForm.do">티켓</StyledNavia>
         </StyledNavi>
         </>

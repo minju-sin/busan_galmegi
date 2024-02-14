@@ -10,12 +10,12 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainPage />} />
-                <Route path="/News" element={<NewsPage />} />
-                <Route path="/Intro" element={<IntroPage />} />
+                <Route path="/news" element={<NewsPage />} />
+                <Route path="/intro" element={<IntroPage />} />
 
                 {/* 마! 톡 */}
-                <Route path="/MaTalk" element={<MaTalkPage />} />
-                <Route path="/MaTalkWrite" element={<MaTalkWritePage />} />
+                <Route path="/maTalk" element={<MaTalkPage />} />
+                <Route path="/maTalk/write" element={<MaTalkWritePage />} />
 
 
             </Routes>

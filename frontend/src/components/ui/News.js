@@ -44,7 +44,7 @@ const News = ({ }) => {
     return (
         <>
         <StyledTitle>뉴스
-            <StyledMoreLink href="/News">더보기<StyledMoreImg src={SeeMore}/></StyledMoreLink>
+            <StyledMoreLink href="/news">더보기<StyledMoreImg src={SeeMore}/></StyledMoreLink>
         </StyledTitle>
         {/* todo: 뉴스 api 생성 후 수정  */}
         <StyledNewsWrapper>
