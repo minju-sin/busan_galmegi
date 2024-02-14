@@ -11,25 +11,23 @@ const StyledMapWrapper = styled.div`
     text-align: center;
 `;
 
-const KakaoMap = () => {
-  return (
-    <StyledMapWrapper>
-      <Map
-        center={{ lat: 35.1940316, lng: 129.0615183 }}
-        style={{
-          width: '1080px',
-          height: '500px',
-        }}
-      >
-        <MapMarker
-          style={{ border: 'tranparent' }}
-          position={{ lat: 35.1940316, lng: 129.0615183 }}
+const KakaoMap = ({ latitude, longitude }) => {
+    return (
+      <StyledMapWrapper>
+        <Map
+          center={{ lat: latitude, lng: longitude }}
+          style={{
+            width: '1080px',
+            height: '500px',
+          }}
         >
-        </MapMarker>
-      </Map>
-    </StyledMapWrapper>
-    //핀에 적힐 이름 (위치 이름)
-  );
-};
+          <MapMarker
+            style={{ border: 'transparent' }}
+            position={{ lat: latitude, lng: longitude }}
+          />
+        </Map>
+      </StyledMapWrapper>
+    );
+  };
 
 export default KakaoMap;

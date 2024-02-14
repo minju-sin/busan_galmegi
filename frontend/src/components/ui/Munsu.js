@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import MunsuImg from '../images/Munsu.gif';
 import { StyledTitle } from './Sns';
 import { StyledIntroP } from "./Sajik";
+import KakaoMap from "./KakaoMap";
 
 const Sajik = () => {
 
@@ -21,6 +22,7 @@ const Sajik = () => {
             </StyledIntroP>
             
             <StyledTitle>위치</StyledTitle>
+            <KakaoMap latitude={35.5321681} longitude={129.2655749} />
         </div>
     );
 };

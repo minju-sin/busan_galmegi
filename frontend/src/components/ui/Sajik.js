@@ -33,7 +33,7 @@ const Sajik = () => {
             </StyledIntroP>
 
             <StyledTitle>위치</StyledTitle>
-            <KakaoMap/>
+            <KakaoMap latitude={35.1940316} longitude={129.0615183} />
         </div>
     );
 };
