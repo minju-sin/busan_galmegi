@@ -26,7 +26,7 @@ const Intro = () => {
                 <Button onClick={() => handleButtonClick("문수구장")}>문수구장</Button>
             </ButtonGroup>
 
-            {/* 사직구장 버튼 클릭하면 사직구장 소개 보여줌 */}
+            {/* 버튼 클릭하면 구장 소개 보여줌 */}
             {selectedStadium === "사직구장" && (
                 <Sajik/>
             )}
