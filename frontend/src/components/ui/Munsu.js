@@ -1,20 +1,17 @@
 import React from "react";
-import { styled } from 'styled-components';
 import MunsuImg from '../images/Munsu.gif';
 import { StyledTitle } from './Sns';
-import { StyledIntroP } from "./Sajik";
+import { StyledIntro, StyledIntroImage, StyledIntroP } from "./Sajik";
 import KakaoMap from "./KakaoMap";
 
 const Sajik = () => {
 
     return (
-        <div>
+        <StyledIntro>
             <StyledTitle>문수구장</StyledTitle>
-            <img src={MunsuImg}/>
+            <StyledIntroImage src={MunsuImg}/>
             <StyledIntroP>
                 울산광역시 남구 옥동에 위치한 야구장으로 2012년 9월 28일 착공하였으며 2014년 3월 22일 개장하였다.
-            </StyledIntroP>
-            <StyledIntroP>
                 관람석은 총 12,068석으로 고정석(내야)은 8,038석, 잔디석(외야)은 4,000석, 스카이박스 30명이 설치되어 있다.
             </StyledIntroP>
             <StyledIntroP>
@@ -23,7 +20,7 @@ const Sajik = () => {
             
             <StyledTitle>위치</StyledTitle>
             <KakaoMap latitude={35.5321681} longitude={129.2655749} />
-        </div>
+        </StyledIntro>
     );
 };
 

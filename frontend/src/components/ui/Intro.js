@@ -20,12 +20,13 @@ const Intro = () => {
     };
 
     return (
+        <>
         <StyledIntroWrapper>
             <ButtonGroup variant="contained" aria-label="Basic button group">
                 <Button onClick={() => handleButtonClick("사직구장")}>사직구장</Button>
                 <Button onClick={() => handleButtonClick("문수구장")}>문수구장</Button>
             </ButtonGroup>
-
+        </StyledIntroWrapper>
             {/* 버튼 클릭하면 구장 소개 보여줌 */}
             {selectedStadium === "사직구장" && (
                 <Sajik/>
@@ -33,7 +34,7 @@ const Intro = () => {
             {selectedStadium === "문수구장" && (
                 <Munsu/>
             )}
-        </StyledIntroWrapper>
+        </>
     );
 };
 
