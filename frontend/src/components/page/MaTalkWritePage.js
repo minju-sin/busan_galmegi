@@ -1,9 +1,9 @@
-// ../Page/MaTalkPage.js
+// ../Page/MaTalkWritePage.js
 
 
 import React from "react";
 import MainHeader from "../ui/MainHeader.js";
-import MaTalk from "../ui/MaTalk.js";
+import MaTalkWrite from "../ui/MaTalkWrite.js";
 import Footer from "../ui/Footer.js";
 
 function MaTalkPage() {
@@ -11,7 +11,7 @@ function MaTalkPage() {
     return (
         <>
             <MainHeader/>
-            <MaTalk/>
+            <MaTalkWrite/>
             <Footer/>
         </>
     );

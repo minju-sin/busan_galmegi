@@ -25,7 +25,10 @@ const Intro = () => {
             <ButtonGroup variant="contained" aria-label="Basic button group">
                 <Button 
                     onClick={() => handleButtonClick("사직구장")}
-                    sx={{ backgroundColor: '#041E42', color: 'white', '&:hover': { backgroundColor: '#303f9f' }, fontFamily:"Regular",
+                    sx={{ 
+                    backgroundColor: '#041E42', 
+                    color: 'white', 
+                    '&:hover': { backgroundColor: '#303f9f' }, fontFamily:"Regular",
                     width: '150px',
                     height: '50px'
                     }}
@@ -34,7 +37,10 @@ const Intro = () => {
                 </Button>
                 <Button 
                     onClick={() => handleButtonClick("문수구장")}
-                    sx={{ backgroundColor: '#D00F31', color: 'white', '&:hover': { backgroundColor: '#d32f2f' },
+                    sx={{ 
+                    backgroundColor: '#D00F31',
+                    color: 'white', 
+                    '&:hover': { backgroundColor: '#d32f2f' },
                     fontFamily:"Regular",
                     width: '150px',
                     height: '50px'
