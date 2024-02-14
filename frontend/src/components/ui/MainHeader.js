@@ -55,7 +55,7 @@ const StyledNavi = styled.div`
 
 /* 네비게이션 a */
 const StyledNavia = styled.a`
-    color: #000;
+    color: black; // D00F31 빨강
     text-align: center;
     font-family: "Bold";
     font-size: 20px;
@@ -76,7 +76,7 @@ const MainHeader = ({ }) => {
         </StyledMainHeader>
 
         <StyledNavi>
-            <StyledNavia>미디어</StyledNavia>
+            <StyledNavia style={{color: "#D00F31"}}>미디어</StyledNavia>
             <StyledNavia>소개</StyledNavia>
             <StyledNavia href="https://www.giantsclub.com/html/?pcode=257">경기/중계</StyledNavia>
             <StyledNavia>마!톡</StyledNavia>
