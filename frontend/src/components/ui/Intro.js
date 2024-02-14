@@ -13,7 +13,7 @@ const StyledIntroWrapper = styled.div`
 `;
 
 const Intro = () => {
-    const [selectedStadium, setSelectedStadium] = useState(null);
+    const [selectedStadium, setSelectedStadium] = useState('사직구장');
 
     const handleButtonClick = (stadium) => {
         setSelectedStadium(stadium);
