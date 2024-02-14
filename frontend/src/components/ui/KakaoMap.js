@@ -1,24 +1,33 @@
 import { Map, MapMarker } from "react-kakao-maps-sdk";
+import styled from "styled-components";
 
+// 사직 35.1940316, 129.0615183
+// 문수 35.5321681, 129.2655749
+
+const StyledMapWrapper = styled.div`
+    width: 100px;
+    max-width: 1080px;
+    margin: 0, auto;
+    text-align: center;
+`;
 
 const KakaoMap = () => {
   return (
-    <div>
+    <StyledMapWrapper>
       <Map
-        center={{ lat: 37.506320759000715, lng: 127.05368251210247 }}
+        center={{ lat: 35.1940316, lng: 129.0615183 }}
         style={{
-          width: '600px',
+          width: '1080px',
           height: '500px',
-          borderRadius: '20px',
         }}
       >
         <MapMarker
           style={{ border: 'tranparent' }}
-          position={{ lat: 37.506320759000715, lng: 127.05368251210247 }}
+          position={{ lat: 35.1940316, lng: 129.0615183 }}
         >
         </MapMarker>
       </Map>
-    </div>
+    </StyledMapWrapper>
     //핀에 적힐 이름 (위치 이름)
   );
 };
