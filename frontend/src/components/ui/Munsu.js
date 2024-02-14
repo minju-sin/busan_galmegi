@@ -21,7 +21,6 @@ const Sajik = () => {
             </StyledIntroP>
             
             <StyledTitle>위치</StyledTitle>
-            
         </div>
     );
 };

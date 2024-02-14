@@ -2,6 +2,7 @@ import React from "react";
 import { styled } from 'styled-components';
 import SajikImg from '../images/Sajik.gif';
 import { StyledTitle } from './Sns';
+import KakaoMap from "./KakaoMap";
 
 export const StyledIntroP = styled.p`
     width: 100%;
@@ -32,7 +33,7 @@ const Sajik = () => {
             </StyledIntroP>
 
             <StyledTitle>위치</StyledTitle>
-            
+            <KakaoMap/>
         </div>
     );
 };
