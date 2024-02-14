@@ -1,5 +1,4 @@
-// ./MainPage.js 
-// src/components/Home.js
+// ../Page/MainPage.js
 
 import React from "react";
 import MainHeader from "../ui/MainHeader.js";
