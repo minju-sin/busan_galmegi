@@ -4,10 +4,11 @@ import Youtube  from '../images/Youtube.jpg';
 import Instagram  from '../images/Instagram.jpg';
 import Facebook  from '../images/Facebook.jpg';
 
+/* 타이틀 이름 */
 export const StyledTitle = styled.p`
     width: 100%;
     max-width: 1080px;
-    margin: 0 auto;
+    margin: 30px auto;
     color: #000;
     font-family: "Bold";
     font-size: 40px;
@@ -27,7 +28,7 @@ const StyledSNSImgLink = styled.a`
     width: 295px;
     height: 120px;
     flex-shrink: 0;
-    margin: 0 auto;
+    margin: 0px auto 50px;
     align-items: center;
     border-radius: 10px;
     cursor: pointer; /* 마우스 포인터를 손가락 모양으로 변경하여 클릭 가능함을 나타냄 */
