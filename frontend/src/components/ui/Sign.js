@@ -2,7 +2,7 @@ import React from "react";
 import Button from '@mui/material/Button';
 import { styled } from 'styled-components';
 
-export const StyledSignWrapper = styled.div`
+const StyledSignWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center; /* 수평 가운데 정렬 */
