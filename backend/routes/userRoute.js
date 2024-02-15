@@ -1,12 +1,16 @@
 const express = require("express");
-const {getAllUsers, createUser, getIdUser, putIdUser, deleteIdUser} = require("../controllers/userController");
+const {getAllUsers, createUser, getIdUser, putIdUser, deleteIdUser, findUser} = require("../controllers/userController");
 const router = express.Router();
 
-// 연락처 가져오기 
+// 사용자 가져오기
 router
 .route("/")
     .get(getAllUsers)
     .post(createUser);
+
+router
+.route("/login")
+    .post(findUser);
 
 router
 .route("/:id")

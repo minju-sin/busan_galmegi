@@ -27,6 +27,20 @@ const createUser = asyncHandler(async (req, res) => {
     res.send("Create Users");
 });
 
+// Post login user
+const findUser = asyncHandler(async (req, res) => {
+    console.log(req.body);
+
+    // 실제 로그인 처리 코드 작성
+    // 여기서는 간단히 로그인 성공 여부를 응답으로 보내는 예시를 작성합니다.
+    const { userId, password } = req.body;
+    if (userId === 'user' && password === 'password') {
+        res.status(200).json({ success: true, message: '로그인 성공' });
+    } else {
+        res.status(401).json({ success: false, message: '로그인 실패' });
+    }
+})
+
 // Get id user
 // Get /users/:id
 const getIdUser = asyncHandler(async (req, res) => {
@@ -68,4 +82,4 @@ const deleteIdUser = asyncHandler(async (req, res) => {
     res.send(`Deleted`);
 });
 
-module.exports = { getAllUsers, createUser, getIdUser, putIdUser, deleteIdUser };
+module.exports = { getAllUsers, createUser, getIdUser, putIdUser, deleteIdUser, findUser};
