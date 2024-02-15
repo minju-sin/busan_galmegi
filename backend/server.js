@@ -1,9 +1,12 @@
 // server.js
 
 const express = require('express');
+const dbConnect = require("./config/dbConnect");
 const cors = require("cors");
 
 const app = express();
+
+dbConnect();
 
 app.use(express.json());
 
