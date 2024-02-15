@@ -6,10 +6,10 @@ margin: 0 auto;  좌우 여백을 자동으로 설정하여 가운데 정렬
 */
 
 import React from "react";
-import Button from '@mui/material/Button';
 import { styled } from 'styled-components';
 import logoImage from '../images/Logo.svg';
 import profileImage from '../images/profile.svg';
+import NaverLogin from "./NaverLogin";
 
 /* 헤더 div */
 const StyledMainHeader = styled.div`
@@ -73,7 +73,7 @@ const MainHeader = ({ }) => {
         <StyledMainHeader>
             <StyledLogo src={logoImage} alt="로고이미지"/>
             <StyledMainLogo>부산갈매기</StyledMainLogo>
-            <a href="/login"><Button variant="contained">로그인</Button></a>
+            <NaverLogin/>
             {/* <StyledLogo src={profileImage} alt="프로필"/> */}
 
         </StyledMainHeader>
