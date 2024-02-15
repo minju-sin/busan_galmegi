@@ -8,25 +8,27 @@ const userSchema = new mongoose.Schema(
         userId: {
             // 타입과 필수 속성
             type: String,
-            require: [true, "아이디는 꼭 기입해 주세요."]
+            require: true
         },
         password: {
             // 타입과 필수 속성
             type: String,
-            require: [true, "비밀번호는 꼭 기입해 주세요."]
+            maxlength: 12,
+            require: true
         },
         name: {
             // 타입과 필수 속성
             type: String,
-            require: [true, "이름은 꼭 기입해 주세요."]
+            require: true
         },
         email: {
             type: String
         },
         nickname:{
             type: String,
-            require: [true, "닉네임은 꼭 기입해 주세요."]
-        }
+            require: [true, "닉네임은 꼭 기입해 주세요."],
+            unique: 1 // 중복 허용 안함 
+        },
     },
     {
          // timestamps는 자료가 작성, 수정될 때 자동으로 시간을 기록해주는 속성 

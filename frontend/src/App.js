@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LoginPage from './components/page/LoginPage';
+import SignPage from './components/page/SignPage';
 import MainPage from './components/page/MainPage';
 import NewsPage from './components/page/NewsPage';
 import IntroPage from './components/page/IntroPage';
@@ -9,6 +11,9 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/sign" element={<SignPage />} />
+
                 <Route path="/" element={<MainPage />} />
                 <Route path="/news" element={<NewsPage />} />
                 <Route path="/intro" element={<IntroPage />} />

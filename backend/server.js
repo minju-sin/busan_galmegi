@@ -15,10 +15,6 @@ app.use(cors({
     credentials: true,
 }));
 
-// get 요청
-app.get('/api/userData', (req, res) => {
-    res.send(`hello`);
-});
 
 app.use("/users", require("./routes/userRoute"));
 

@@ -6,6 +6,8 @@ margin: 0 auto;  좌우 여백을 자동으로 설정하여 가운데 정렬
 */
 
 import React from "react";
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
 import { styled } from 'styled-components';
 import logoImage from '../images/Logo.svg';
 import profileImage from '../images/profile.svg';
@@ -72,7 +74,16 @@ const MainHeader = ({ }) => {
         <StyledMainHeader>
             <StyledLogo src={logoImage} alt="로고이미지"/>
             <StyledMainLogo>부산갈매기</StyledMainLogo>
-            <StyledLogo src={profileImage} alt="프로필"/>
+            <ButtonGroup
+                disableElevation
+                variant="contained"
+                aria-label="Disabled button group"
+            >
+                <a href="/login"><Button>로그인</Button></a>
+                <a href="/sign"><Button>회원가입</Button></a>
+            </ButtonGroup>
+            {/* <StyledLogo src={profileImage} alt="프로필"/> */}
+
         </StyledMainHeader>
 
         <StyledNavi>
