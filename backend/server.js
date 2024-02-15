@@ -20,6 +20,8 @@ app.get('/api/userData', (req, res) => {
     res.send(`hello`);
 });
 
+app.use("/users", require("./routes/userRoute"));
+
 app.listen(8080, () => {
     console.log("서버 실행 중"); // 8080번 포트로 서버 실행
 });
