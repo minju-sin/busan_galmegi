@@ -1,18 +1,14 @@
 // ../Page/LoginPage.js
 
 import React from "react";
-import MainHeader from "../ui/MainHeader.js";
-import Footer from "../ui/Footer.js";
+import Login from "../ui/Login.js";
 
 
 function LoginPage() {
 
     return (
         <>
-            <MainHeader/>
-            
-            
-            <Footer/>
+            <Login/>
         </>
     );
 }

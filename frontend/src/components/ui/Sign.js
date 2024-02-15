@@ -1,9 +1,8 @@
 import React from "react";
 import Button from '@mui/material/Button';
 import { styled } from 'styled-components';
-import { StyledTitle } from "./Sns";
 
-const StyledSignWrapper = styled.div`
+export const StyledSignWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center; /* 수평 가운데 정렬 */
@@ -16,15 +15,15 @@ const StyledSignWrapper = styled.div`
     background-color: #eee;
 `;
 
-const StyledSign = styled.p`
-    font-family: "Inline";
+export const StyledSign = styled.p`
+    font-family: "Bold";
     font-size: 50px;
     width: 200px;
     height: 50px;
     text-align: center;
 `;
 
-const StyledSignOne = styled.div`
+export const StyledSignOne = styled.div`
     width: 100%;
     max-width: 500px;
     height: 50px;
@@ -33,7 +32,7 @@ const StyledSignOne = styled.div`
     align-items: center;
 `;
 
-const StyledSignInput = styled.input`
+export const StyledSignInput = styled.input`
     width: 100%;
     max-width: 400px;
     height: 50px;
