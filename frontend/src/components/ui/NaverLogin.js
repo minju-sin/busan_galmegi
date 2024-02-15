@@ -1,20 +1,26 @@
-import React, { useEffect } from 'react';
+// 클라이언트 코드 (예를 들어, React 앱)
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function NaverLogin() {
-  const clientId = process.env.REACT_APP_NAVER_CLIENT_ID;
-  const callbackUrl = process.env.REACT_APP_URL;
+  const [naverLoginLink, setNaverLoginLink] = useState('');
 
   useEffect(() => {
-    const naverLogin = new window.naver.LoginWithNaverId({
-      clientId: clientId,
-      callbackUrl: callbackUrl,
-      loginButton: { color: "green", type: 2, height: 40 }
-    });
-    naverLogin.init();
-  }, [clientId, callbackUrl]);
+    // 서버에서 네이버 로그인 링크를 받아옴
+    axios.get('http://localhost:8080/naverlogin')
+      .then(response => {
+        setNaverLoginLink(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching naver login link:', error);
+      });
+  }, []);
 
   return (
-    <div id="naverIdLogin"></div>
+    <div>
+      <div dangerouslySetInnerHTML={{__html: naverLoginLink}}></div>
+    </div>
   );
 }
 
