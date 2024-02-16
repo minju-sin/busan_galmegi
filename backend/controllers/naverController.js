@@ -42,22 +42,17 @@ const getNaverCallback = asyncHandler (async (req, res) => {
     + '&state=' 
     + state;
 
-    var request = require('request');
-
-    var options = {
-        url: api_url,
-        headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
-    };
-
-    request.get(options, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
-            res.end(body);
-        } else {
-            res.status(response.statusCode).end();
-            console.log('error = ' + response.statusCode);
+    const response = await fetch(api_url, {
+        headers: 
+        {
+            'X-Naver-Client-Id':client_id, 
+            'X-Naver-Client-Secret': client_secret
         }
     });
+
+    const tokenRequest = await response.json();
+    return res.send(tokenRequest);
+
 });
 
 module.exports = {getNaverButton, getNaverCallback};
