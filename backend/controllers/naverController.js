@@ -27,10 +27,11 @@ const getNaverButton = asyncHandler (async (req, res) => {
 });
 
 const getNaverCallback = asyncHandler (async (req, res) => {
-
+    // 토큰을 발급받으려면 query string으로 넘겨야 할 정보들이다.
     code = req.query.code;
     state = req.query.state;
 
+    // 로그인 API를 사용해 access token을 발급받는다.
     const api_url = 'https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id='
     + client_id 
     + '&client_secret=' 
@@ -50,6 +51,7 @@ const getNaverCallback = asyncHandler (async (req, res) => {
         }
     });
 
+    // JSON 형식으로 access token 받아온다.
     const tokenRequest = await response.json();
     return res.send(tokenRequest);
 
