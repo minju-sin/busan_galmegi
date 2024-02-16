@@ -5,7 +5,7 @@ max-width: 1440px;  최대 너비를 1440px로 제한
 margin: 0 auto;  좌우 여백을 자동으로 설정하여 가운데 정렬 
 */
 
-import React from "react";
+import React, { useEffect } from "react"; // useEffect import 추가
 import { styled } from 'styled-components';
 import { useCookies } from "react-cookie";
 import logoImage from '../images/Logo.svg';
@@ -81,6 +81,22 @@ const StyledNavia = styled.a`
 const MainHeader = ({ }) => {
 
     const [cookies] = useCookies(["userData"]); // "userData" 쿠키 가져오기
+
+    useEffect(() => {
+        if (cookies.userData) { // userData 쿠키가 있는 경우에만 서버로 요청 보냄
+            sendUserDataToServer(cookies.userData);
+        }
+    }, [cookies.userData]); // userData가 변경될 때마다 실행됨
+
+    const sendUserDataToServer = (userData) => {
+        axios.post("/users", { userData })
+            .then(response => {
+                console.log('데이터 전송에 성공했습니다.', response.data);
+            })
+            .catch(error => {
+                console.error('데이터 전송에 실패했습니다.', error);
+            });
+    };
 
     return (
         <>

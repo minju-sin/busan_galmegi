@@ -2,8 +2,6 @@
 
 const asyncHandler = require("express-async-handler");
 const cookieParser = require('cookie-parser');
-const User = require("../models/userModel");
-
 const crypto = require('crypto');
 
 // 랜덤한 문자열 생성
