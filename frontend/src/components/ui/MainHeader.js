@@ -7,6 +7,7 @@ margin: 0 auto;  좌우 여백을 자동으로 설정하여 가운데 정렬
 
 import React from "react";
 import { styled } from 'styled-components';
+import { useCookies } from "react-cookie";
 import logoImage from '../images/Logo.svg';
 import profileImage from '../images/profile.svg';
 import NaverLogin from "./NaverLogin";
@@ -68,13 +69,17 @@ const StyledNavia = styled.a`
 
 
 const MainHeader = ({ }) => {
+
+    const [cookies] = useCookies(["userData"]); // "userData" 쿠키 가져오기
+
+
     return (
         <>
         <StyledMainHeader>
             <StyledLogo src={logoImage} alt="로고이미지"/>
             <StyledMainLogo>부산갈매기</StyledMainLogo>
             <NaverLogin/>
-            {/* <StyledLogo src={profileImage} alt="프로필"/> */}
+            {cookies.userData && <img src={profileImage} alt="프로필"/>} {/* 쿠키가 존재하면 프로필 이미지 표시 */}
 
         </StyledMainHeader>
 
