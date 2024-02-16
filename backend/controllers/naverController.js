@@ -121,7 +121,7 @@ const getNaverCallback = asyncHandler(async (req, res) => {
         // 리다이렉트
         res.redirect('http://localhost:3000/');
     } else {
-        res.status(400).json({ success: false, error: 'Access token not found in response' });
+        res.status(400).json({ success: false, error: 'Access token 응답을 찾을 수 없습니다.' });
     }
 });
 
