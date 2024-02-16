@@ -11,6 +11,7 @@ import { useCookies } from "react-cookie";
 import logoImage from '../images/Logo.svg';
 import NaverLogin from "./NaverLogin";
 import Profile from "./Profile";
+import axios from "axios";
 
 /* 헤더 div */
 const StyledMainHeader = styled.div`
@@ -71,7 +72,6 @@ const StyledNavia = styled.a`
 const MainHeader = ({ }) => {
 
     const [cookies] = useCookies(["userData"]); // "userData" 쿠키 가져오기
-
 
     return (
         <>
