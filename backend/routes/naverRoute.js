@@ -7,6 +7,7 @@ router
 .route("/login")
     .get(getNaverButton);
 
+// 네이버 콜백 + 회원정보 가져오기
 router
 .route("/oAuth/callback")
     .get(getNaverCallback);
