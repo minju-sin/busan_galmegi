@@ -75,37 +75,6 @@ const getNaverCallback = asyncHandler(async (req, res) => {
         // 회원 정보 JSON 형식으로 받아온다.
         const userData = await data.json();
 
-        // DB(User)에 회원 정보를 저장한다.
-        const { id, nickname, profile_image, email, mobile, mobile_e164, name } = userData.response;
-
-        try {
-            // 이미 등록된 사용자인지 확인
-            const existingUser = await User.findOne({ email: email });
-
-            if (existingUser) {
-                console.log('이미 등록된 사용자입니다.');
-                res.status(200).json({ success: true });
-                return;
-            } else {
-                // 등록되지 않은 사용자라면 회원 정보 저장
-                const newUser = await User.create({
-                    id: id,
-                    nickname: nickname,
-                    profile_image: profile_image,
-                    email: email,
-                    mobile: mobile,
-                    mobile_e164: mobile_e164,
-                    name: name,
-                });
-
-                console.log('새로운 사용자 추가!', newUser);
-            }
-        } catch (error) {
-            console.error('사용자 추가 중 오류 발생:', error);
-            res.status(500).json({ success: false, error: '사용자 추가 중 오류 발생' });
-            return;
-        }
-
         // 쿠키에 사용자 정보 저장
         res.cookie(
             'userData',
@@ -120,8 +89,7 @@ const getNaverCallback = asyncHandler(async (req, res) => {
         
         // 리다이렉트
         res.redirect('http://localhost:3000/');
-    } else {
-        res.status(400).json({ success: false, error: 'Access token 응답을 찾을 수 없습니다.' });
+        return;
     }
 });
 
