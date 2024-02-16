@@ -14,7 +14,7 @@ function NaverLogin() {
 
   useEffect(() => {
     // 서버에서 네이버 로그인 링크를 받아옴
-    axios.get('/naverlogin')
+    axios.get('/naver/login')
       .then(response => {
         setNaverLoginLink(response.data);
       })
