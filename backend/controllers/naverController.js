@@ -1,13 +1,14 @@
 const asyncHandler = require("express-async-handler");
 
 const crypto = require('crypto');
+const { json } = require("express");
 // 랜덤한 문자열 생성
 const randomState = crypto.randomBytes(20).toString('hex');
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.SECRET;
 var state = randomState;
-var redirectURI = encodeURI("http://localhost:8080/naver/oAuth/callback");
+var redirectURI = encodeURI(process.env.CALLBACK_URL);
 
 // 네이버 로그인 버튼
 // GET /naver/login
@@ -26,6 +27,8 @@ const getNaverButton = asyncHandler (async (req, res) => {
 
 });
 
+// 네이버로그인 토큰 요청
+// GET /naver/oAuth/callback
 const getNaverCallback = asyncHandler (async (req, res) => {
     // 토큰을 발급받으려면 query string으로 넘겨야 할 정보들이다.
     code = req.query.code;
@@ -53,8 +56,24 @@ const getNaverCallback = asyncHandler (async (req, res) => {
 
     // JSON 형식으로 access token 받아온다.
     const tokenRequest = await response.json();
-    return res.send(tokenRequest);
+    
+    // 회원 프로필 조회 API 
+    if("access_token" in tokenRequest){
+        const {access_token} = tokenRequest;
+        const apiUrl = "https://openapi.naver.com/v1/nid/me";
 
+        const data = await fetch(apiUrl, {
+            headers: 
+            {
+                Authorization: `Bearer ${access_token}`,
+            },
+        });
+
+        // 회원 정보 JSON 형식으로 받아온다.
+        const userData = await data.json();
+
+        console.log(userData);  //  콘솔에 출력한다.
+    }
 });
 
 module.exports = {getNaverButton, getNaverCallback};
