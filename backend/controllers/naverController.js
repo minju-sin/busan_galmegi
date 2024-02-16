@@ -1,4 +1,7 @@
+// ./controllers/naverController.js
+
 const asyncHandler = require("express-async-handler");
+const User = require("../models/userModel");
 
 const crypto = require('crypto');
 const { json } = require("express");
@@ -27,7 +30,7 @@ const getNaverButton = asyncHandler (async (req, res) => {
 
 });
 
-// 네이버로그인 토큰 요청
+// 네이버로그인 토큰 요청 + User에 정보 저장 
 // GET /naver/oAuth/callback
 const getNaverCallback = asyncHandler (async (req, res) => {
     // 토큰을 발급받으려면 query string으로 넘겨야 할 정보들이다.
@@ -72,7 +75,26 @@ const getNaverCallback = asyncHandler (async (req, res) => {
         // 회원 정보 JSON 형식으로 받아온다.
         const userData = await data.json();
 
-        console.log(userData);  //  콘솔에 출력한다.
+        // DB(User)에 회원 정보를 저장한다. 
+        const { id, nickname, profile_image, email, mobile, mobile_e164, name } = userData.response;
+
+        try{
+            const newUser = await User.create({
+                id: id,
+                nickname: nickname,
+                profile_image: profile_image,
+                email: email,
+                mobile: mobile,
+                mobile_e164: mobile_e164,
+                name: name
+            });
+
+            console.log('새로운 사용자 추가!', newUser);
+            res.status(200).json({ success: true });
+        }catch(error){
+            console.error('사용자 추가 중 오류 발생:', error);
+            res.status(500).json({ success: false, error: '사용자 추가 중 오류 발생' });
+        }
     }
 });
 
