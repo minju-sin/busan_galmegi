@@ -2,6 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const StyledNaver = styled.div`
+  margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
+  height: 50px;
+`;
 
 function NaverLogin() {
   const [naverLoginLink, setNaverLoginLink] = useState('');
@@ -18,9 +24,9 @@ function NaverLogin() {
   }, []);
 
   return (
-    <div>
-      <div dangerouslySetInnerHTML={{__html: naverLoginLink}}></div>
-    </div>
+    <>
+      <StyledNaver dangerouslySetInnerHTML={{__html: naverLoginLink}}></StyledNaver>
+    </>
   );
 }
 
