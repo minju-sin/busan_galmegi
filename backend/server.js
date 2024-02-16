@@ -5,7 +5,6 @@ const cors = require("cors");
 const app = express();
 dbConnect();    //  DB 연결
 
-
 // cors 설정
 app.use(express.json());
 
@@ -14,8 +13,7 @@ app.use(cors({
     credentials: true,
 }));
 
-
-app.use("/users", require("./routes/userRoute"));
+// 네이버 간단로그인
 app.use("/naver", require("./routes/naverRoute"));
 
 
