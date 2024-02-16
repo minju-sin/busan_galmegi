@@ -1,7 +1,6 @@
 // ./controllers/naverController.js
 
 const asyncHandler = require("express-async-handler");
-const User = require("../models/userModel");
 
 const crypto = require('crypto');
 const { json } = require("express");
@@ -75,6 +74,8 @@ const getNaverCallback = asyncHandler (async (req, res) => {
         // 회원 정보 JSON 형식으로 받아온다.
         const userData = await data.json();
         console.log(userData);
+
+        
     }
 });
 
