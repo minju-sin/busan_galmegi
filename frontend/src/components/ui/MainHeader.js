@@ -9,8 +9,8 @@ import React from "react";
 import { styled } from 'styled-components';
 import { useCookies } from "react-cookie";
 import logoImage from '../images/Logo.svg';
-import profileImage from '../images/profile.svg';
 import NaverLogin from "./NaverLogin";
+import Profile from "./Profile";
 
 /* 헤더 div */
 const StyledMainHeader = styled.div`
@@ -40,7 +40,7 @@ const StyledMainLogo = styled.p`
 `;
 
 /* 헤더 로고 이미지 */
-const StyledLogo = styled.img`
+export const StyledLogo = styled.img`
     margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
     height: 50px;
 `;
@@ -78,8 +78,8 @@ const MainHeader = ({ }) => {
         <StyledMainHeader>
             <StyledLogo src={logoImage} alt="로고이미지"/>
             <StyledMainLogo>부산갈매기</StyledMainLogo>
-            <NaverLogin/>
-            {cookies.userData && <img src={profileImage} alt="프로필"/>} {/* 쿠키가 존재하면 프로필 이미지 표시 */}
+            {!cookies.userData && <NaverLogin/>} {/* 쿠키가 존재하지 않으면 네이버로그인 버튼 표시 */}
+            {cookies.userData && <Profile/>} {/* 쿠키가 존재하면 프로필 이미지 표시 */}
 
         </StyledMainHeader>
 
