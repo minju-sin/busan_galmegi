@@ -1,7 +1,7 @@
 // ./controllers/naverController.js
 
 const asyncHandler = require("express-async-handler");
-
+const cookieParser = require('cookie-parser');
 const crypto = require('crypto');
 const { json } = require("express");
 // 랜덤한 문자열 생성
@@ -73,9 +73,18 @@ const getNaverCallback = asyncHandler (async (req, res) => {
 
         // 회원 정보 JSON 형식으로 받아온다.
         const userData = await data.json();
-        console.log(userData);
 
-        
+        // 쿠키에 사용자 정보 저장
+        res.cookie('userData', 
+            {
+                ...userData, access_token: access_token
+            },
+            {
+                maxAge: 10000000,
+            }
+        );
+        res.redirect("http://localhost:3000/");
+        return;
     }
 });
 
