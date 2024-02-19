@@ -46,6 +46,15 @@ export const StyledLogo = styled.img`
     height: 50px;
 `;
 
+/* 헤더 프로필 메뉴 */
+export const StyledProfile = styled.button`
+    margin: 0 auto;
+    height: 50px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+`;
+
 /* 네비게이션 div */
 const StyledNavi = styled.div`
     width: 100%; /* 너비를 100%로 설정하여 화면에 맞춤 */
