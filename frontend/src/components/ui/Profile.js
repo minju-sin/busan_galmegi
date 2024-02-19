@@ -1,6 +1,7 @@
 // ../ui/Profile.js
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+
 import profileImage from '../images/profile.svg';
 import { StyledLogo, StyledProfile } from './MainHeader';
 import Menu from '@mui/material/Menu';
@@ -9,33 +10,20 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import axios from 'axios';
 
 function Profile() {
 
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [userName, setUserName] = useState(''); // 사용자 이름 상태 변수
+    // 프로필 열고 닫는 상태변수
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
+    // 프로필 열기 함수
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
+    // 프로필 닫기 함수
     const handleClose = () => {
         setAnchorEl(null);
-    };
-
-    useEffect(() => {
-        // 사용자 이름을 불러오는 함수 호출
-        fetchUserName();
-    }, []);
-
-    const fetchUserName = async () => {
-        try {
-            const response = await axios.get('/users/:id'); // 서버에서 사용자 이름 가져오기
-            setUserName(response.data.userName); // 사용자 이름 설정
-        } catch (error) {
-            console.error('사용자 이름을 불러오지 못했습니다.', error);
-        }
     };
 
     return (
@@ -44,6 +32,7 @@ function Profile() {
                 <StyledLogo src={profileImage} alt="프로필" />
             </StyledProfile>
 
+            {/* Menu 컴포넌트를 사용하여 클릭한 위치에 메뉴가 표시되도록 설정 */}
             <Menu
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
@@ -58,8 +47,8 @@ function Profile() {
                 }}
                 getContentAnchorEl={null}
             >
-                {/* 사용자 이름을 표시하는 메뉴 아이템 */}
-                <MenuItem onClick={handleClose}>{userName}님</MenuItem>
+                {/* 메뉴 아이템 */}
+                <MenuItem onClick={handleClose}>000님</MenuItem>
                 <Divider />
                 <MenuItem onClick={handleClose}>
                     <ListItemIcon>
