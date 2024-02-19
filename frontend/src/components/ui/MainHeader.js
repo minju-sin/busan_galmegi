@@ -81,22 +81,6 @@ const StyledNavia = styled.a`
 const MainHeader = ({ }) => {
     const [cookies] = useCookies(["userData"]); // "userData" 쿠키 가져오기
 
-    useEffect(() => {
-        if (cookies.userData) { // userData 쿠키가 있는 경우에만 서버로 요청 보냄
-            sendUserDataToServer(cookies.userData);
-        }
-    }, [cookies.userData]); // userData가 변경될 때마다 실행됨
-
-    const sendUserDataToServer = (userData) => {
-        axios.post("/users", { userData })
-            .then(response => {
-                console.log('데이터 전송에 성공했습니다.', response.data);
-            })
-            .catch(error => {
-                console.error('데이터 전송에 실패했습니다.', error);
-            });
-    };
-
     return (
         <>
         <StyledMainHeader>
