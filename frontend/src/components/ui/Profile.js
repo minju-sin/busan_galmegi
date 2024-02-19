@@ -24,8 +24,10 @@ function Profile() {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                // 서버로부터 받은 사용자 정보에는 ID가 포함되어 있다고 가정
+                // 서버로부터 받은 사용자 정보에는 ID가 포함되어 있다.
                 const response = await axios.get(`/users/${userData.id}`);
+
+                // id에 따라 사용자 정보 저장 
                 setUserData(response.data.user);
             } catch (err) {
                 console.error("프로필을 찾을 수 없습니다.", err);
