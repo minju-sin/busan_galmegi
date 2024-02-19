@@ -41,11 +41,7 @@ function Profile() {
     return (
         <>
             <StyledProfile onClick={handleClick}>
-                {userData ? (
-                    <StyledLogo src={userData.profile_image} alt="프로필" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
-                ) : (
-                    <StyledLogo src={profileImage} alt="기본프로필" />
-                )}
+                <StyledLogo src={userData.profile_image} alt="프로필" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
             </StyledProfile>
 
             <Menu
@@ -70,13 +66,13 @@ function Profile() {
                             <ListItemIcon>
                                 <Settings fontSize="small" />
                             </ListItemIcon>
-                            Settings
+                            마이페이지
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
                             <ListItemIcon>
                                 <Logout fontSize="small" />
                             </ListItemIcon>
-                            Logout
+                            로그아웃
                         </MenuItem>
                     </>
                 )}
