@@ -103,8 +103,7 @@ const MainHeader = ({ }) => {
             <StyledLogo src={logoImage} alt="로고이미지"/>
             <StyledMainLogo>부산갈매기</StyledMainLogo>
             {!cookies.userData && <NaverLogin/>} {/* 쿠키가 존재하지 않으면 네이버로그인 버튼 표시 */}
-            {cookies.userData && <Profile/>} {/* 쿠키가 존재하면 프로필 이미지 표시 */}
-
+            {cookies.userData && <Profile/>} {/* 쿠키가 존재하면 네이버로그인 버튼 표시 */}
         </StyledMainHeader>
 
         <StyledNavi>

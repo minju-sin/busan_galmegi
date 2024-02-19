@@ -21,29 +21,30 @@ function Profile() {
         setAnchorEl(null);
     };
 
-    useEffect(() => {
-        const fetchUserProfile = async () => {
-            try {
-                // 서버로부터 받은 사용자 정보에는 ID가 포함되어 있다.
-                const response = await axios.get(`/users/${userData.id}`);
+    // useEffect(() => {
+    //     const fetchUserProfile = async () => {
+    //         try {
+    //             // 서버로부터 받은 사용자 정보에는 ID가 포함되어 있다.
+    //             const response = await axios.get(`/users/${userData.id}`);
 
-                // id에 따라 사용자 정보 저장 
-                setUserData(response.data.user);
-            } catch (err) {
-                console.error("프로필을 찾을 수 없습니다.", err);
-            }
-        };
+    //             // id에 따라 사용자 정보 저장 
+    //             setUserData(response.data.user);
+    //         } catch (err) {
+    //             console.error("프로필을 찾을 수 없습니다.", err);
+    //         }
+    //     };
 
-        // userData가 설정되면(fetchUserProfile 함수가 최초로 실행될 때) 프로필 정보를 요청
-        if (userData) {
-            fetchUserProfile();
-        }
-    }, [userData]);
+    //     // userData가 설정되면(fetchUserProfile 함수가 최초로 실행될 때) 프로필 정보를 요청
+    //     if (userData) {
+    //         fetchUserProfile();
+    //     }
+    // }, [userData]);
 
     return (
         <>
             <StyledProfile onClick={handleClick}>
-                <StyledLogo src={userData.profile_image} alt="프로필" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
+                {/* <StyledLogo src={userData.profile_image} alt="프로필" style={{ width: '50px', height: '50px', borderRadius: '50%' }} /> */}
+                <StyledLogo src={profileImage} alt="프로필" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
             </StyledProfile>
 
             <Menu
@@ -60,9 +61,9 @@ function Profile() {
                 }}
                 getContentAnchorEl={null}
             >
-                {userData && (
+                
                     <>
-                        <MenuItem onClick={handleClose}>{userData.nickname}님</MenuItem>
+                        <MenuItem onClick={handleClose}>111님</MenuItem>
                         <Divider />
                         <MenuItem onClick={handleClose}>
                             <ListItemIcon>
@@ -77,7 +78,6 @@ function Profile() {
                             로그아웃
                         </MenuItem>
                     </>
-                )}
             </Menu>
         </>
     );

@@ -3,6 +3,7 @@
 const asyncHandler = require("express-async-handler");
 const cookieParser = require('cookie-parser');
 const crypto = require('crypto');
+const User = require("../models/userModel");
 
 // 랜덤한 문자열 생성
 const randomState = crypto.randomBytes(20).toString('hex');
@@ -33,8 +34,8 @@ const getNaverButton = asyncHandler (async (req, res) => {
 // GET /naver/oAuth/callback
 const getNaverCallback = asyncHandler(async (req, res) => {
     // 토큰을 발급받으려면 query string으로 넘겨야 할 정보들이다.
-    code = req.query.code;
-    state = req.query.state;
+    const code = req.query.code;
+    const state = req.query.state;
 
     // 로그인 API를 사용해 access token을 발급받는다.
     const api_url =
@@ -84,12 +85,37 @@ const getNaverCallback = asyncHandler(async (req, res) => {
                 maxAge: 10000000,
             }
         );
-        
-        // 리다이렉트
-        res.redirect('http://localhost:3000/');
-        return;
+
+        try {
+            // DB(User)에 회원 정보를 저장한다. 
+            const { id, nickname, profile_image, email, mobile, mobile_e164, name } = userData.response;
+
+            // 이미 등록된 사용자인지 확인
+            const existingUser = await User.findOne({ email: email });
+
+            if (existingUser) {
+                console.log('이미 등록된 사용자입니다.');
+                return res.redirect('http://localhost:3000/');
+            } else {
+                // 등록되지 않은 사용자라면 회원 정보 저장
+                const newUser = await User.create({
+                    id: id,
+                    nickname: nickname,
+                    profile_image: profile_image,
+                    email: email,
+                    mobile: mobile,
+                    mobile_e164: mobile_e164,
+                    name: name
+                });
+
+                console.log('새로운 사용자 추가!', newUser);
+                return res.redirect('http://localhost:3000/');
+            }
+        } catch (error) {
+            console.error('사용자 추가 중 오류 발생:', error);
+            return res.status(500).json({ success: false, error: '사용자 추가 중 오류 발생' });
+        }
     }
 });
 
-
-module.exports = {getNaverButton, getNaverCallback};
+module.exports = { getNaverButton, getNaverCallback };
