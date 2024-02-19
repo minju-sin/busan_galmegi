@@ -79,7 +79,6 @@ const StyledNavia = styled.a`
 
 
 const MainHeader = ({ }) => {
-
     const [cookies] = useCookies(["userData"]); // "userData" 쿠키 가져오기
 
     useEffect(() => {
