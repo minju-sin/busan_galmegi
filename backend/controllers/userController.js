@@ -37,5 +37,7 @@ const saveUserData = asyncHandler(async (req, res) => {
     }
 });
 
+// 사용자 프로필 정보 불러오기 
+// GET /users/:{id}
 
-module.exports = {saveUserData};
+module.exports = { saveUserData };
