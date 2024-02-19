@@ -1,17 +1,11 @@
 // ./MainHeader.js
-/*
-width: 100%;  너비를 100%로 설정하여 화면에 맞춤 
-max-width: 1440px;  최대 너비를 1440px로 제한 
-margin: 0 auto;  좌우 여백을 자동으로 설정하여 가운데 정렬 
-*/
 
-import React, { useEffect } from "react"; // useEffect import 추가
+import React from "react"; // useEffect import 추가
 import { styled } from 'styled-components';
 import { useCookies } from "react-cookie";
 import logoImage from '../images/Logo.svg';
 import NaverLogin from "./NaverLogin";
 import Profile from "./Profile";
-import axios from "axios";
 
 /* 헤더 div */
 const StyledMainHeader = styled.div`
@@ -78,7 +72,7 @@ const StyledNavia = styled.a`
 `;
 
 
-const MainHeader = ({ }) => {
+function MainHeader(){
     const [cookies] = useCookies(["userData"]); // "userData" 쿠키 가져오기
 
     return (
