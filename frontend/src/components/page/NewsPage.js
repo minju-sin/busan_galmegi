@@ -6,6 +6,7 @@ import MainHeader from "../ui/MainHeader.js";
 import Footer from "../ui/Footer.js";
 import { StyledTitle } from "../ui/Sns.js";
 import FetchNewsData from "../hooks/FetchNewsData.js";
+import { StyledIntro } from "../ui/Sajik.js";
 
 function NewsPage() {
     const newsData = FetchNewsData();
@@ -13,7 +14,7 @@ function NewsPage() {
     return (
         <>
             <MainHeader/>
-            <div>
+            <StyledIntro>
                 <StyledTitle>뉴스</StyledTitle>
                 <ul>
                     {newsData.map((newsItem, index) => (
@@ -24,7 +25,7 @@ function NewsPage() {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </StyledIntro>
             <Footer/>
         </>
     );
