@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 import { useCookies } from "react-cookie";
 import logoImage from '../images/Logo.svg';
 import NaverLogin from "./NaverLogin";
-import Profile from "./Profile";
+import HeaderProfile from "./HeaderProfile";
 
 /* 헤더 div */
 const StyledMainHeader = styled.div`
@@ -81,7 +81,7 @@ function MainHeader(){
             <StyledLogo src={logoImage} alt="로고이미지"/>
             <StyledMainLogo>부산갈매기</StyledMainLogo>
             {!cookies.userData && <NaverLogin/>} {/* 쿠키가 존재하지 않으면 네이버로그인 버튼 표시 */}
-            {cookies.userData && <Profile/>} {/* 쿠키가 존재하면 네이버로그인 버튼 표시 */}
+            {cookies.userData && <HeaderProfile/>} {/* 쿠키가 존재하면 프로필 메뉴 표시 */}
         </StyledMainHeader>
 
         <StyledNavi>
