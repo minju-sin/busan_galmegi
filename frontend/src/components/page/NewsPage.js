@@ -19,8 +19,9 @@ function NewsPage() {
                 <ul>
                     {newsData.map((newsItem, index) => (
                         <li key={index}>
-                            <a href={newsItem.link} target="_blank" rel="noopener noreferrer">{newsItem.title}</a>
-                            <p>{newsItem.description}</p>
+                            <a href={newsItem.link} target="_blank" rel="noopener noreferrer" dangerouslySetInnerHTML={{ __html: newsItem.title }} />
+
+                            <p dangerouslySetInnerHTML={{ __html: newsItem.description }} />
                             <p>발행일: {newsItem.pubDate}</p>
                         </li>
                     ))}
