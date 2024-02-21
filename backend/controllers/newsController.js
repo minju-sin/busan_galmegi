@@ -8,7 +8,7 @@ const client_secret = process.env.SECRET;
 // GET /news
 const getNaverNews = asyncHandler(async (req, res) => {
     
-    const api_url = 'https://openapi.naver.com/v1/search/blog?query=' + encodeURI(req.query.query); // JSON 결과
+    const api_url = 'https://openapi.naver.com/v1/search/news.json?query=' + encodeURI('롯데자이언츠'); // JSON 결과 야구에 대한 뉴스
 
     try {
         const response = await fetch(api_url, {
@@ -24,7 +24,7 @@ const getNaverNews = asyncHandler(async (req, res) => {
         
         const data = await response.json();
         res.json(data);
-        res.send(data);
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: '서버 오류 발생' });
