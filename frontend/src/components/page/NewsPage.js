@@ -1,32 +1,14 @@
 // ../Page/NewsPage.js
 
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MainHeader from "../ui/MainHeader.js";
 import Footer from "../ui/Footer.js";
 import { StyledTitle } from "../ui/Sns.js";
-import MainImage from './../ui/MainImage';
+import FetchNewsData from "../hooks/FetchNewsData.js";
 
 function NewsPage() {
-    const [newsData, setNewsData] = useState([]);
-
-    useEffect(() => {
-        fetchNewsData();
-    }, []);
-
-    const fetchNewsData = async () => {
-        try{
-            const response = await fetch('/news');
-            if(!response.ok){
-                throw new Error('서버로부터 데이터를 가져오는 데 실패하였습니다.');
-            }
-
-            const data = await response.json();
-            setNewsData(data.items);
-        }catch(error){
-            console.error(error);
-        }
-    };
+    const newsData = FetchNewsData();
 
     return (
         <>
