@@ -2,6 +2,52 @@
 
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
+import styled from 'styled-components';
+import { StyledTitle } from './Sns';
+import { StyledIntro, StyledIntroP } from './Sajik';
+import { StyledLogo } from './MainHeader';
+
+
+const StyledProfileWrapper = styled.div`
+    width: 100%;
+    max-width: 1080px;
+    height: 670px;
+    margin: 0 auto;
+`;
+
+const StyledTableWrapper = styled.div`
+    width: 100%;
+    max-width: 500px;
+    margin: 70px auto;
+`;
+
+const StyledTable = styled.table`
+    width: 100%;
+    max-width: 500px;
+    margin: 0, auto;
+    border-collapse: collapse;
+    font-family: 'Regular';
+    font-size: 15px;
+
+`;
+
+const StyledTableRow = styled.tr`
+    border: 1px solid black;
+    border-radius: 10px;
+`;
+
+// 테이블 제목 
+const StyledTableHeaderCell = styled.th`
+    padding: 20px;
+    text-align: center;
+    border: 1px solid black;
+`;
+
+// 테이블 값 
+const StyledTableCell = styled.td`
+    padding: 10px;
+    text-align: center;
+`;
 
 function Profile() {
     const [cookies] = useCookies(['userData']); // 쿠키에서 userData 가져오기
@@ -47,15 +93,36 @@ function Profile() {
     }
 
     return (
-        <>
-            <p>
-                프로필
-            </p>
-            <p>전화번호: {userProfile.mobile}</p>
-            <p>닉네임: {userProfile.nickname}</p>
-            <p>이름: {userProfile.name}</p>
-            <p>프로필: <img src={userProfile.profile_image} alt="Profile" /></p>
-        </>
+        <StyledProfileWrapper>
+            <StyledTitle>
+                마이페이지
+            </StyledTitle>
+
+            <StyledIntro style={{ display: 'grid', placeItems: 'center' }}>
+                <StyledLogo src={userProfile.profile_image} alt="프로필사진" style={{ width: '100px', height: '100px', borderRadius: '50%' }}/>
+                <StyledIntroP style={{ display: 'grid', placeItems: 'center' }}>{userProfile.nickname}</StyledIntroP>
+            </StyledIntro>
+
+            <StyledTableWrapper>
+                <StyledTable>
+                    <tbody>
+                        <StyledTableRow>
+                            <StyledTableHeaderCell>이름</StyledTableHeaderCell>
+                            <StyledTableCell>{userProfile.name}</StyledTableCell>
+                        </StyledTableRow>
+                        <StyledTableRow>
+                            <StyledTableHeaderCell>닉네임</StyledTableHeaderCell>
+                            <StyledTableCell>{userProfile.nickname}</StyledTableCell>
+                        </StyledTableRow>
+                        <StyledTableRow>
+                            <StyledTableHeaderCell>전화번호</StyledTableHeaderCell>
+                            <StyledTableCell>{userProfile.mobile}</StyledTableCell>
+                        </StyledTableRow>
+                    
+                    </tbody>
+                </StyledTable>
+            </StyledTableWrapper>
+        </StyledProfileWrapper>
     );
 }
 
