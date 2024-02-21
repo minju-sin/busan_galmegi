@@ -1,3 +1,5 @@
+// ../ui/Profile.js
+
 import React, { useEffect, useState } from 'react';
 import profileImage from '../images/profile.svg';
 import { StyledLogo, StyledProfile } from './MainHeader';
@@ -7,10 +9,16 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import styled from 'styled-components';
+
+const StyledProfileMenu = styled.a`
+    text-decoration: none; /* 링크의 밑줄 제거 */  
+    color: inherit; /* 링크의 색상 제거 */
+`
 
 function Profile() {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [userData, setUserData] = useState(null);
+    const [anchorEl, setAnchorEl] = React.useState(null);   // 메뉴 상태변수
+    const [userData, setUserData] = useState(null); //  프로필 상태변수
 
     // 쿠키에 저장된 사용자 정보를 이용해 사용자 정보 불러온다. 
     useEffect(() => {
@@ -23,7 +31,11 @@ function Profile() {
                 if (!response.ok) {
                     throw new Error('프로필을 찾을 수 없습니다.');
                 }
+
+                // userData에 쿠키 정보를 json으로 변환시켜 저장한다.
                 const userData = await response.json();
+
+                // setUserData에 저장한다.
                 setUserData(userData);
             } catch (error) {
                 console.error(error);
@@ -67,14 +79,14 @@ function Profile() {
                     <>
                         <MenuItem onClick={handleClose}>{userData ? userData.response.nickname + '님' : '찾을 수 없음'}</MenuItem>
                         <Divider />
-                        <a href='/profile'>
+                        <StyledProfileMenu href='/profile'>
                             <MenuItem onClick={handleClose}>
                                 <ListItemIcon>
                                     <Settings fontSize="small" />
                                 </ListItemIcon>
                             마이페이지
                             </MenuItem>
-                        </a>
+                        </StyledProfileMenu>
                         <MenuItem onClick={handleClose}>
                             <ListItemIcon>
                                 <Logout fontSize="small" />
