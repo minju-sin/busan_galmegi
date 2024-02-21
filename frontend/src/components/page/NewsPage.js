@@ -16,16 +16,14 @@ function NewsPage() {
             <MainHeader/>
             <StyledIntro>
                 <StyledTitle>뉴스</StyledTitle>
-                <ul>
                     {newsData.map((newsItem, index) => (
-                        <li key={index}>
+                        <div key={index}>
                             <a href={newsItem.link} target="_blank" rel="noopener noreferrer" dangerouslySetInnerHTML={{ __html: newsItem.title }} />
 
                             <p dangerouslySetInnerHTML={{ __html: newsItem.description }} />
                             <p>발행일: {newsItem.pubDate}</p>
-                        </li>
+                        </div>
                     ))}
-                </ul>
             </StyledIntro>
             <Footer/>
         </>
