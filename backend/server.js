@@ -22,6 +22,9 @@ app.use("/naver", require("./routes/naverRoute"));
 // 사용자
 app.use("/users", require("./routes/userRoute"));
 
+// 네이버 뉴스
+//app.use("/news", require("./routes/newsRoute"));
+
 // 쿠키에 저장된 사용자 정보를 확인하는 엔드포인트
 app.get("/checkCookie", (req, res) => {
     const userData = req.cookies.userData;
