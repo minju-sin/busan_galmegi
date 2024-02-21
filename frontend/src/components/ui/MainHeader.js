@@ -34,6 +34,12 @@ const StyledMainLogo = styled.p`
     line-height: normal;
 `;
 
+/* a태그 속성 제거 */ 
+export const StyledTagA = styled.a`
+    text-decoration: none;
+    color: inherit;
+`;
+
 /* 헤더 로고 이미지 */
 export const StyledLogo = styled.img`
     margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
@@ -79,7 +85,7 @@ function MainHeader(){
         <>
         <StyledMainHeader>
             <StyledLogo src={logoImage} alt="로고이미지"/>
-            <StyledMainLogo>부산갈매기</StyledMainLogo>
+            <StyledMainLogo><StyledTagA href="/">부산갈매기</StyledTagA></StyledMainLogo>
             {!cookies.userData && <NaverLogin/>} {/* 쿠키가 존재하지 않으면 네이버로그인 버튼 표시 */}
             {cookies.userData && <HeaderProfile/>} {/* 쿠키가 존재하면 프로필 메뉴 표시 */}
         </StyledMainHeader>
