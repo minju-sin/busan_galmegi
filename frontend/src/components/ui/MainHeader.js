@@ -1,6 +1,6 @@
 // ./MainHeader.js
 
-import React from "react"; // useEffect import 추가
+import React, { useEffect, useState } from "react"; // useEffect import 추가
 import { styled } from 'styled-components';
 import { useCookies } from "react-cookie";
 import logoImage from '../images/Logo.svg';
@@ -74,6 +74,65 @@ const StyledNavia = styled.a`
 
 function MainHeader(){
     const [cookies] = useCookies(["userData"]); // "userData" 쿠키 가져오기
+    const [userData, setUserData] = useState(null);
+    const [userProfile, setUserProfile] = useState(null); // 사용자 프로필 상태
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch('/checkCookie', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user profile');
+                }
+                const userData = await response.json();
+                setUserData(userData);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            try {
+                if (!cookies.userData) {
+                    throw new Error("쿠키에서 사용자 정보를 찾을 수 없습니다.");
+                }
+                
+                // 쿠키에서 사용자 ID 추출
+                const userId = cookies.userData.response.id;
+
+                // 사용자 프로필 정보를 가져오기 위해 서버로 요청
+                const response = await fetch(`/users/${userId}`, {
+                    method: "GET",
+                    credentials: "include", // 쿠키 전송을 위해 필요한 옵션
+                });
+
+                if (!response.ok) {
+                    throw new Error("사용자 프로필을 불러오는데 실패했습니다.");
+                }
+
+                // 사용자 프로필 정보를 JSON 형태로 파싱하여 상태에 설정
+                const userProfile = await response.json();
+                setUserProfile(userProfile);
+            } catch (error) {
+                console.error(error.message);
+            }
+        };
+
+        fetchUserProfile();
+    }, [cookies.userData]); // 쿠키의 userData가 변경될 때마다 실행
+
+    // 사용자 프로필이 로드되지 않았을 때
+    if (!userProfile) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <>
@@ -91,6 +150,14 @@ function MainHeader(){
             <StyledNavia href="/maTalk">마!톡</StyledNavia>
             <StyledNavia href="https://ticket.giantsclub.com/loginForm.do">티켓</StyledNavia>
         </StyledNavi>
+
+        <div>
+            <h2>User Profile</h2>
+            <p>ID: {userProfile._id}</p>
+            <p>Nickname: {userProfile.nickname}</p>
+            <p>Name: {userProfile.name}</p>
+            <p>Profile Image: <img src={userProfile.profile_image} alt="Profile" /></p>
+        </div>
         </>
     );
 };
