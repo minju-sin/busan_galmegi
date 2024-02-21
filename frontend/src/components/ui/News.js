@@ -40,7 +40,7 @@ const StyledNewsImg = styled.img`
 `;
 
 
-const News = ({ }) => {
+function News() {
     return (
         <>
         <StyledTitle>뉴스
