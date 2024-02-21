@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './components/page/MainPage';
+import ProfilePage from './components/page/ProfilePage';
 import NewsPage from './components/page/NewsPage';
 import IntroPage from './components/page/IntroPage';
 import MaTalkPage from './components/page/MaTalkPage';
@@ -10,6 +11,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/news" element={<NewsPage />} />
                 <Route path="/intro" element={<IntroPage />} />
 
