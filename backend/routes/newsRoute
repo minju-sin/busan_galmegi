@@ -1,5 +1,5 @@
 const express = require("express");
-const {getNaverNews} = require("../controllers/newsController.js");
+const {getNaverNews} = require("../controllers/newsController");
 const router = express.Router();
 
 // 뉴스 검색 결과 

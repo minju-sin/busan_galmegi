@@ -1,19 +1,35 @@
 // ./controllers/newsController.js
 
 const asyncHandler = require("express-async-handler");
+const client_id = process.env.CLIENT_ID;
+const client_secret = process.env.SECRET;
 
-
-// 쿠키 정보와 DB에 저장된 사용자 일치하면 해당 프로필 불러오기 
+// 네이버 뉴스 API 
 // GET /news
 const getNaverNews = asyncHandler(async (req, res) => {
     
+    const api_url = 'https://openapi.naver.com/v1/search/blog?query=' + encodeURI(req.query.query); // JSON 결과
 
-    try{
+    try {
+        const response = await fetch(api_url, {
+            headers:{
+                'X-Naver-Client-Id': client_id, 
+                'X-Naver-Client-Secret': client_secret
+            }
+        });
         
-
-    }catch(error){
-        return res.status(500).send("서버 오류가 발생했습니다.");
+        if (!response.ok) {
+            throw new Error('네이버 API 요청에 실패했습니다.');
+        }
+        
+        const data = await response.json();
+        res.json(data);
+        res.send(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: '서버 오류 발생' });
     }
-}); 
 
-module.exports = { getUserProfile };
+});
+
+module.exports = { getNaverNews };
