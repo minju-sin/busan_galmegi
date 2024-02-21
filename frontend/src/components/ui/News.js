@@ -5,6 +5,7 @@ import { styled } from 'styled-components';
 import { StyledTitle } from "./Sns";
 import MainImg1 from '../images/MainImg1.jpg';
 import SeeMore from '../images/SeeMore.svg';
+import FetchNewsData from "../hooks/FetchNewsData.js";
 
 const StyledMoreLink = styled.a`
     color: #9B9A9A;
@@ -34,23 +35,27 @@ const StyledNewsImg = styled.img`
     width: 295px;
     height: 270px;
     flex-shrink: 0;
-    margin: 0 auto 50px; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
+    margin: 0 30px 50px; /* 좌우 여백 20px 추가 */
     align-items: center;
     border-radius: 10px;
 `;
 
 
 function News() {
+    const newsData = FetchNewsData();
+
     return (
         <>
         <StyledTitle>뉴스
             <StyledMoreLink href="/news">더보기<StyledMoreImg src={SeeMore}/></StyledMoreLink>
         </StyledTitle>
-        {/* todo: 뉴스 api 생성 후 수정  */}
+        
         <StyledNewsWrapper>
-            <StyledNewsImg src={MainImg1} alt="자이언츠 뉴스1"/>
-            <StyledNewsImg src={MainImg1} alt="자이언츠 뉴스2"/>
-            <StyledNewsImg src={MainImg1} alt="자이언츠 뉴스3"/>
+            {newsData.slice(0, 3).map((newsItem, index) => (
+                <a key={index} href={newsItem.link} target="_blank" rel="noopener noreferrer">
+                    <StyledNewsImg src={MainImg1} alt={`자이언츠 뉴스${index + 1}`} />
+                </a>
+            ))}
         </StyledNewsWrapper>
         </>
     );
