@@ -3,15 +3,16 @@
 import React from "react";
 import { StyledTitle } from './Sns';
 import Button from '@mui/material/Button';
+import { StyledIntro } from "./Sajik";
 
 
-const MaTalk = ({ }) => {
+function MaTalk() {
     return (
-        <div>
-            <StyledTitle>마!톡</StyledTitle>
+        <StyledIntro>
+            <StyledTitle>마! 톡</StyledTitle>
             {/* 테이블 형태의 글 목록 나열 */}
             <a href="/maTalk/write"><Button variant="contained">글쓰기</Button></a>
-        </div>
+        </StyledIntro>
     );
 };
 
