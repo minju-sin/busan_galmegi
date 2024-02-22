@@ -73,8 +73,13 @@ const StyledNavia = styled.a`
     font-size: 20px;
     width: 105px;
     flex-direction: row;
-    cursor: pointer;
     text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s; 
+    
+    &:hover {
+        color: #D00F31; 
+    }
 `;
 
 
