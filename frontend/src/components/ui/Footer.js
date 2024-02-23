@@ -10,7 +10,7 @@ const StyledFooterWrapper = styled.div`
     height: 100px;
     margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
     align-items: center;
-    background-color: #EEEEEE;
+    background-color: #CCCCCC;
 `;
 
 const FooterEmail = styled.p`
@@ -32,7 +32,7 @@ const FooterLogo = styled.p`
 `;
 
 
-const Footer = ({ }) => {
+function Footer() {
     return (
         <>
         <StyledFooterWrapper>

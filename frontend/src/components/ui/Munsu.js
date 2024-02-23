@@ -1,7 +1,6 @@
 import React from "react";
 import MunsuImg from '../images/Munsu.gif';
-import { StyledTitle } from './Sns';
-import { StyledIntro, StyledIntroImage, StyledIntroP } from "./Sajik";
+import { StyledTitle, StyledIntro, StyledIntroImage, StyledIntroP } from '../styles/Intro/intro';
 import KakaoMap from "./KakaoMap";
 
 const Sajik = () => {

@@ -1,18 +1,10 @@
 import React from "react";
-import { styled } from 'styled-components';
+import styled from "styled-components";
 import Youtube  from '../images/Youtube.jpg';
 import Instagram  from '../images/Instagram.jpg';
 import Facebook  from '../images/Facebook.jpg';
+import { StyledTitle } from "../styles/Intro/intro";
 
-/* 타이틀 이름 */
-export const StyledTitle = styled.p`
-    width: 100%;
-    max-width: 1080px;
-    margin: 30px auto;
-    color: #000;
-    font-family: "Bold";
-    font-size: 40px;
-`;
 
 const StyledSNSWrapper = styled.div`
     display: flex;

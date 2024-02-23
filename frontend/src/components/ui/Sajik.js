@@ -1,29 +1,8 @@
 import React from "react";
-import { styled } from 'styled-components';
 import SajikImg from '../images/Sajik.gif';
-import { StyledTitle } from './Sns';
 import KakaoMap from "./KakaoMap";
+import { StyledTitle, StyledIntro, StyledIntroImage, StyledIntroP} from '../styles/Intro/intro';
 
-export const StyledIntro = styled.div`
-    width: 100%;
-    max-width: 1080px;
-    margin: 50px auto;
-`;
-
-export const StyledIntroImage = styled.img`
-    width: 100%;
-    max-width: 1080px;
-    margin: 0 auto;
-    text-align: center;
-`;
-
-export const StyledIntroP = styled.p`
-    width: 100%;
-    max-width: 1080px;
-    margin: 10px auto;
-    font-family: "Regular";
-    font-size: 15px;
-`;
 
 const Sajik = () => {
 

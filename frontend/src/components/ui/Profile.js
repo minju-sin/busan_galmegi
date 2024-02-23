@@ -2,52 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import styled from 'styled-components';
-import { StyledTitle } from './Sns';
-import { StyledIntro, StyledIntroP } from './Sajik';
+import { StyledTitle, StyledIntro, StyledIntroP } from '../styles/Intro/intro';
 import { StyledLogo } from './MainHeader';
-
-
-const StyledProfileWrapper = styled.div`
-    width: 100%;
-    max-width: 1080px;
-    height: 670px;
-    margin: 0 auto;
-`;
-
-const StyledTableWrapper = styled.div`
-    width: 100%;
-    max-width: 500px;
-    margin: 70px auto;
-`;
-
-const StyledTable = styled.table`
-    width: 100%;
-    max-width: 500px;
-    margin: 0, auto;
-    border-collapse: collapse;
-    font-family: 'Regular';
-    font-size: 15px;
-
-`;
-
-const StyledTableRow = styled.tr`
-    border: 1px solid black;
-    border-radius: 10px;
-`;
-
-// 테이블 제목 
-const StyledTableHeaderCell = styled.th`
-    padding: 20px;
-    text-align: center;
-    border: 1px solid black;
-`;
-
-// 테이블 값 
-const StyledTableCell = styled.td`
-    padding: 10px;
-    text-align: center;
-`;
+import {StyledProfileWrapper, StyledTableWrapper, StyledTable, StyledTableRow, StyledTableHeaderCell, StyledTableCell } from '../styles/Profile/profile';
 
 function Profile() {
     const [cookies] = useCookies(['userData']); // 쿠키에서 userData 가져오기
