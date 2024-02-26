@@ -6,6 +6,7 @@ import IntroPage from './components/page/IntroPage';
 import MaTalkPage from './components/page/MaTalkPage';
 import MaTalkWritePage from './components/page/MaTalkWritePage';
 import MaTalkDetailPage from './components/page/MaTalkDetailPage';
+import MaTalkEditPage from './components/page/MaTalkEditPage.js';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/maTalk" element={<MaTalkPage />} />
                 <Route path="/maTalk/write" element={<MaTalkWritePage />} />
                 <Route path="/maTalk/:id" element={<MaTalkDetailPage />} />
+                <Route path="/maTalk/:id/edit" element={<MaTalkEditPage />} />
 
 
             </Routes>

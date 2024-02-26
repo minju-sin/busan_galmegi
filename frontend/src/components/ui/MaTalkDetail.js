@@ -1,6 +1,7 @@
 // ../ui/MaTalkDetail.js
 
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -61,18 +62,21 @@ function MaTalkDetail() {
                             margin: '20px 400px 20px'
                         }}
                     >
-                        <Button 
-                            sx={{ 
-                                backgroundColor: '#041E42', 
-                                color: 'white', 
-                                '&:hover': { backgroundColor: '#303f9f' }, 
-                                fontFamily: "Regular",
-                                width: '150px',
-                                height: '50px'
-                            }}
-                        >
-                            수정하기
-                        </Button>
+                        <Link to={`/maTalk/${talk._id}/edit`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Button 
+                                sx={{ 
+                                    backgroundColor: '#041E42', 
+                                    color: 'white', 
+                                    '&:hover': { backgroundColor: '#303f9f' }, 
+                                    fontFamily: "Regular",
+                                    width: '150px',
+                                    height: '50px'
+                                }}
+                            >
+                                수정하기
+                            </Button>
+                        </Link>
+
                         <Button 
                             onClick={handleDelete}
                             sx={{ 
