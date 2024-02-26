@@ -34,4 +34,27 @@ const CreateTalk = asyncHandler(async (req, res) => {
     res.send("글쓰기 성공");
 }); 
 
-module.exports = { getAllTalks, CreateTalk };
+
+// 마!톡 게시글 보기
+// GET /talks:{id}
+const getIdTalk = asyncHandler(async (req, res) => {
+    try {
+        // 해당 _id의 값을 가진 게시글 가져오기 
+        const talk = await Talk.findById(req.params.id);
+
+        if (!talk) {
+            // 게시글을 찾지 못한 경우 404 에러 응답
+            res.status(404);
+            throw new Error('게시글을 찾을 수 없습니다.');
+        }
+
+        // 게시글을 성공적으로 찾은 경우 클라이언트에 응답으로 전송
+        res.json(talk);
+    } catch (error) {
+        // 오류 발생 시 500 에러 응답
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+module.exports = { getAllTalks, CreateTalk, getIdTalk };
