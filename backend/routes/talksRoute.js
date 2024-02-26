@@ -1,5 +1,5 @@
 const express = require("express");
-const {CreateTalk, getAllTalks, getIdTalk} = require("../controllers/talksController");
+const {CreateTalk, getAllTalks, getIdTalk, putIdTalk, deleteIdTalk} = require("../controllers/talksController");
 const router = express.Router();
 
 // 마!톡 게시판
@@ -10,6 +10,8 @@ router
 
 router
 .route("/:id")
-    .get(getIdTalk);
+    .get(getIdTalk)
+    .put(putIdTalk)
+    .delete(deleteIdTalk);
 
 module.exports = router;

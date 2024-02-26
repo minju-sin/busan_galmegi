@@ -44,8 +44,7 @@ const getIdTalk = asyncHandler(async (req, res) => {
 
         if (!talk) {
             // 게시글을 찾지 못한 경우 404 에러 응답
-            res.status(404);
-            throw new Error('게시글을 찾을 수 없습니다.');
+            res.status(404).json({ message: '게시글을 찾을 수 없습니다.' });
         }
 
         // 게시글을 성공적으로 찾은 경우 클라이언트에 응답으로 전송
@@ -56,5 +55,53 @@ const getIdTalk = asyncHandler(async (req, res) => {
     }
 });
 
+// 마!톡 게시글 수정
+// PUT /talks:{id}
+const putIdTalk = asyncHandler(async (req, res) => {
+    try{
+        const {title, comment} = req.body;
 
-module.exports = { getAllTalks, CreateTalk, getIdTalk };
+        // 해당 _id의 값을 가진 게시글 수정하기
+        const talk = await Talk.findById(req.params.id);
+
+        if(!talk){
+            res.status(404).json({ message: '게시글을 찾을 수 없습니다.' });
+        }
+
+        talk.title = title;
+        talk.comment = comment;
+
+        talk.save();
+        res.json(talk);
+    }catch (error) {
+        // 오류 발생 시 500 에러 응답
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+// 마!톡 게시글 삭제
+// DELETE /talks/:{id}
+const deleteIdTalk = asyncHandler(async (req, res) => {
+
+    try{
+
+        // 해당 _id의 값을 가진 게시글 삭제하기
+        const talk = await Talk.findById(req.params.id);
+
+        if(!talk){
+            res.status(404).json({ message: '게시글을 찾을 수 없습니다.' });
+        }
+
+
+        // 삭제 
+        await Talk.deleteOne();
+        res.send(`삭제`);
+    }catch (error) {
+        // 오류 발생 시 500 에러 응답
+        res.status(500).json({ message: error.message });
+    }
+
+});
+
+module.exports = { getAllTalks, CreateTalk, getIdTalk, putIdTalk, deleteIdTalk };
