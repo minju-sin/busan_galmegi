@@ -142,7 +142,7 @@ function MaTalkWrite() {
 
       if (response.ok) {
         console.log('글 작성 성공');
-        // 성공 시 필요한 처리 추가
+        window.location.href = '/maTalk';
       } else {
         console.error('글 작성 실패');
         // 실패 시 필요한 처리 추가
