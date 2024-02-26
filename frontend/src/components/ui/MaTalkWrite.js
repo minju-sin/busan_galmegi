@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
@@ -21,6 +21,8 @@ import Button from '@mui/material/Button';
 import { CompactPicker } from "react-color";
 import { StyledTitle, StyledIntro } from '../styles/Intro/intro';
 import { StyledMtCommnet, StyledMtFile, StyledMtTitle, StyledMtWrite } from "../styles/MaTalk/write";
+import { fetchUserProfile } from '../hooks/FetchUserProfile';
+import { useCookies } from 'react-cookie';
 
 // 토글 버튼 그룹 스타일
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
@@ -40,8 +42,14 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   },
 }));
 
-
 function MaTalkWrite() {
+  const [cookies] = useCookies(['userData']); // 쿠키에서 userData 가져오기
+  const [userProfile, setUserProfile] = useState(null); // 사용자 프로필 상태
+
+  useEffect(() => {
+    fetchUserProfile(cookies, setUserProfile); // 모듈화된 함수 호출
+  }, [cookies.userData]); // 쿠키의 userData가 변경될 때마다 실행
+
   const [horizontalAlignment, setHorizontalAlignment] = useState("left"); // 텍스트의 가로 정렬 상태를 관리하는 상태 변수
   const [verticalAlignment, setVerticalAlignment] = useState("middle"); // 텍스트의 세로 정렬 상태를 관리하는 상태 변수
   const [formats, setFormats] = useState([]); // 적용된 텍스트 서식을 관리하는 상태 변수
@@ -50,7 +58,8 @@ function MaTalkWrite() {
   const [pickerPosition, setPickerPosition] = useState({ top: 0, left: 0 }); // 컬러 피커의 위치를 관리하는 상태 변수
   const [fontColor, setFontColor] = useState("#000000"); // 텍스트의 글자색을 관리하는 상태 변수
   const [bgColor, setBgColor] = useState("#FFFFFF"); // 텍스트의 배경색을 관리하는 상태 변수
-  const [textValue, setTextValue] = useState(""); // 텍스트 내용을 관리하는 상태 변수
+  const [titleValue, setTitleValue] = useState(""); // 제목 관리하는 상태 변수
+  const [commentValue, setCommentValue] = useState(""); // 내용을 관리하는 상태 변수
   const [file, setFile] = useState(null); // 첨부된 파일을 관리하는 상태 변수
 
   // 가로 정렬 변경 핸들러 함수
@@ -108,6 +117,42 @@ function MaTalkWrite() {
     setFile(selectedFile);
   };
 
+  // 글 작성 요청 핸들러 함수
+  const handlePostTalk = async () => {
+    if (!userProfile) {
+      console.error('사용자 프로필이 없습니다.');
+      return;
+    }
+
+    // 요청 데이터 생성
+    const postData = {
+      title: titleValue, // 제목은 현재 텍스트 내용으로 설정
+      comment: commentValue, // 내용은 현재 텍스트 내용으로 설정
+      nickname: userProfile.nickname // 사용자 프로필에서 닉네임 가져오기
+    };
+
+    try {
+      const response = await fetch('/talks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+      });
+
+      if (response.ok) {
+        console.log('글 작성 성공');
+        // 성공 시 필요한 처리 추가
+      } else {
+        console.error('글 작성 실패');
+        // 실패 시 필요한 처리 추가
+      }
+    } catch (error) {
+      console.error('글 작성 중 오류 발생:', error);
+      // 오류 발생 시 필요한 처리 추가
+    }
+  };
+
   return (
     <>
       <StyledIntro>
@@ -117,7 +162,11 @@ function MaTalkWrite() {
           
           <StyledMtWrite>
             {/* 제목 입력란 */}
-            <StyledMtTitle placeholder="제목" />
+            <StyledMtTitle
+              placeholder="제목"
+              value={titleValue}
+              onChange={(e) => setTitleValue(e.target.value)}
+            />
 
             {/* 파일 첨부 */}
             <StyledMtFile type="file" onChange={handleFileChange} />
@@ -235,8 +284,8 @@ function MaTalkWrite() {
 
             {/* 내용 입력란 */}
               <StyledMtCommnet
-                value={textValue}
-                onChange={(e) => setTextValue(e.target.value)}
+                value={commentValue}
+                onChange={(e) => setCommentValue(e.target.value)}
                 style={{
                   fontWeight: formats.includes("bold") ? "bold" : "normal",
                   fontStyle: formats.includes("italic") ? "italic" : "normal",
@@ -250,7 +299,7 @@ function MaTalkWrite() {
                 cols={50}
               />
 
-              <Button variant="contained" style={{display: 'block', margin: 'auto'}}>작성하기</Button>
+              <Button variant="contained" style={{display: 'block', margin: 'auto'}} onClick={handlePostTalk}>작성하기</Button>
           </StyledMtWrite>
       </StyledIntro>
     </>
