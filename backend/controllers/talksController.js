@@ -4,6 +4,18 @@ const asyncHandler = require("express-async-handler");
 const Talk = require("../models/talkModel");
 
 
+// 마!톡 게시판
+// GET /talks
+const getAllTalks = asyncHandler (async (req, res) => {
+    
+    // 저장된 게시글 전체를 찾는다.
+    const talks = await Talk.find();
+
+    // 저장된 게시글 출력한다.
+    res.send(talks);
+});
+
+
 // 마!톡 글쓰기 
 // POST /talks
 const CreateTalk = asyncHandler(async (req, res) => {
@@ -19,7 +31,7 @@ const CreateTalk = asyncHandler(async (req, res) => {
         comment,
         nickname
     });
-    res.send("글쓰기 성공")
+    res.send("글쓰기 성공");
 }); 
 
-module.exports = { CreateTalk };
+module.exports = { getAllTalks, CreateTalk };
