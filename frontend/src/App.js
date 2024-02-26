@@ -20,6 +20,7 @@ function App() {
                 <Route path="/maTalk/write" element={<MaTalkWritePage />} />
 
 
+
             </Routes>
         </BrowserRouter>
     );

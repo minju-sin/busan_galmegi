@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import { StyledIntro, StyledTitle } from '../styles/Intro/intro.js';
-import MainImg1 from '../images/MainImg1.jpg';
+import GiantsLogo from '../images/GiantsLogo.svg';
 import { StyledMainImg, StyledMainText, StyledMainTextContainer, StyledMainTitle, StyledNewsDiv } from "../styles/News/news.js";
 import { formatDate } from "../common/formatDate.js";
 
@@ -34,11 +34,11 @@ function MaTalk() {
 
             {talks.map((talk, index) => (
             <StyledNewsDiv key={index}>
-                <StyledMainImg src={MainImg1} alt="뉴스" />
+                <StyledMainImg src={GiantsLogo} alt="게시글 이미지" />
 
                     <StyledMainTextContainer key={index}>
                         <StyledMainTitle>{talk.title}</StyledMainTitle>
-                        <StyledMainText>{talk.comment}</StyledMainText>
+
                         <StyledMainText>{talk.nickname}</StyledMainText>
                         <StyledMainText>{formatDate(talk.createdAt)}</StyledMainText>
                     </StyledMainTextContainer>
