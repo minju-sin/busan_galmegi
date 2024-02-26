@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { StyledIntro, StyledTitle } from "../styles/Intro/intro";
+import { StyledDetailHeader, StyledDetailText } from "../styles/MaTalk/detail";
 
 function MaTalkDetail() {
     const { id } = useParams(); // URL 파라미터에서 게시글 ID 추출
@@ -33,17 +34,23 @@ function MaTalkDetail() {
         <StyledIntro>
             {talk && (
                 <>
-                    <p>마!톡</p>
+                    <StyledDetailHeader href="/maTalk">마!톡</StyledDetailHeader>
                     <StyledTitle>{talk.title}</StyledTitle>
-                    <p>{talk.comment}</p>
+                    <StyledDetailText>{talk.comment}</StyledDetailText>
 
-                    <ButtonGroup variant="contained" aria-label="Basic button group">
+                    <ButtonGroup
+                        variant="contained"
+                        aria-label="Basic button group"
+                        sx={{
+                            margin: '20px 400px 20px'
+                        }}
+                    >
                         <Button 
                             sx={{ 
                                 backgroundColor: '#041E42', 
                                 color: 'white', 
                                 '&:hover': { backgroundColor: '#303f9f' }, 
-                                fontFamily:"Regular",
+                                fontFamily: "Regular",
                                 width: '150px',
                                 height: '50px'
                             }}
@@ -55,7 +62,7 @@ function MaTalkDetail() {
                                 backgroundColor: '#D00F31',
                                 color: 'white', 
                                 '&:hover': { backgroundColor: '#d32f2f' }, 
-                                fontFamily:"Regular",
+                                fontFamily: "Regular",
                                 width: '150px',
                                 height: '50px'
                             }}
@@ -63,6 +70,7 @@ function MaTalkDetail() {
                             삭제하기
                         </Button>
                     </ButtonGroup>
+
                 </>
             )}
         </StyledIntro>

@@ -34,7 +34,7 @@ function MaTalk() {
             <StyledTitle>마!톡</StyledTitle>
 
             {talks.map((talk, index) => (
-                <Link to={`/maTalk/${talk._id}`} key={index}>
+                <Link to={`/maTalk/${talk._id}`} key={index} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <StyledNewsDiv>
                         <StyledMainImg src={GiantsLogo} alt="게시글 이미지" />
                         <StyledMainTextContainer>
