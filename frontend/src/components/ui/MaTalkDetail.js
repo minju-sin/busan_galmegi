@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { StyledIntro, StyledTitle } from "../styles/Intro/intro";
 import { StyledDetailHeader, StyledDetailText } from "../styles/MaTalk/detail";
+import { StyledMainText } from "../styles/News/news";
+import { formatDate } from "../common/formatDate";
 
 function MaTalkDetail() {
     const { id } = useParams(); // URL 파라미터에서 게시글 ID 추출
@@ -53,6 +55,7 @@ function MaTalkDetail() {
                 <>
                     <StyledDetailHeader href="/maTalk">마!톡</StyledDetailHeader>
                     <StyledTitle>{talk.title}</StyledTitle>
+                    <StyledMainText>{talk.nickname} {formatDate(talk.createdAt)}</StyledMainText>
                     <StyledDetailText>{talk.comment}</StyledDetailText>
 
                     <ButtonGroup
