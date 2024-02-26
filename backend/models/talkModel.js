@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
     title: 제목입니다.
     comment: 내용입니다.
     nickname: '아무개',
-    pro
     file: 'https://ssl.pstatic.net/static/pwe/address/img_profile.png'
 */
 
