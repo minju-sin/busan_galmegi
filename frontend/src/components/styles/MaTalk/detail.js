@@ -16,7 +16,7 @@ export const StyledDetailHeader = styled.a`
 `;
 
 export const StyledDetailText = styled.p`
-    
+    height: 350px;
     font-family: 'Regular';
     font-size: 20px;
 `;
