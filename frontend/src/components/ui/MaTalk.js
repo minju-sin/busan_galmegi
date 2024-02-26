@@ -1,6 +1,7 @@
 // ./MaTalk.js
 
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import { StyledIntro, StyledTitle } from '../styles/Intro/intro.js';
 import GiantsLogo from '../images/GiantsLogo.svg';
@@ -33,16 +34,16 @@ function MaTalk() {
             <StyledTitle>마!톡</StyledTitle>
 
             {talks.map((talk, index) => (
-            <StyledNewsDiv key={index}>
-                <StyledMainImg src={GiantsLogo} alt="게시글 이미지" />
-
-                    <StyledMainTextContainer key={index}>
-                        <StyledMainTitle>{talk.title}</StyledMainTitle>
-
-                        <StyledMainText>{talk.nickname}</StyledMainText>
-                        <StyledMainText>{formatDate(talk.createdAt)}</StyledMainText>
-                    </StyledMainTextContainer>
-            </StyledNewsDiv>
+                <Link to={`/maTalk/${talk._id}`} key={index}>
+                    <StyledNewsDiv>
+                        <StyledMainImg src={GiantsLogo} alt="게시글 이미지" />
+                        <StyledMainTextContainer>
+                            <StyledMainTitle>{talk.title}</StyledMainTitle>
+                            <StyledMainText>{talk.nickname}</StyledMainText>
+                            <StyledMainText>{formatDate(talk.createdAt)}</StyledMainText>
+                        </StyledMainTextContainer>
+                    </StyledNewsDiv>
+                </Link>
             ))}
 
             <a href="/maTalk/write"><Button variant="contained">글쓰기</Button></a>
