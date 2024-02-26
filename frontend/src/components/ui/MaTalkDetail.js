@@ -30,6 +30,22 @@ function MaTalkDetail() {
         fetchTalk(); // 페이지가 로드될 때 게시글을 가져오는 함수 호출
     }, [id]); // useEffect의 의존성 배열에 id 추가하여 해당 값이 변경될 때마다 useEffect가 재실행되도록 설정
 
+    const handleDelete = async () => {
+        try {
+            const response = await fetch(`/talks/${id}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                // 삭제 성공 시 메인 페이지로 이동
+                window.location.href = '/maTalk';
+            } else {
+                throw new Error('게시글 삭제에 실패했습니다.');
+            }
+        } catch (error) {
+            console.error('게시글을 삭제하는 중 오류가 발생했습니다:', error);
+        }
+    };
+
     return (
         <StyledIntro>
             {talk && (
@@ -58,6 +74,7 @@ function MaTalkDetail() {
                             수정하기
                         </Button>
                         <Button 
+                            onClick={handleDelete}
                             sx={{ 
                                 backgroundColor: '#D00F31',
                                 color: 'white', 
