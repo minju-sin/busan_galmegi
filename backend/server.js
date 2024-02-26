@@ -31,7 +31,7 @@ app.get("/checkCookie", (req, res) => {
     if (userData) {
         res.json(userData);
     } else {
-        res.send('No userData found in cookies');
+        res.send('쿠키에서 사용자 정보를 찾을 수 없습니다.');
     }
 });
 
