@@ -1,4 +1,5 @@
 # 부산갈매기
+https://www.notion.so/ancho/464b34d3383346e880426c9b27e0af33?pvs=4
 
 # 개발 기간
 
