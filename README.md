@@ -99,4 +99,3 @@ https://www.youtube.com/watch?v=7EMgJ3X_55Y
 
 현재는 단순한 기능들만 삽입 하였지만, [socket.io](http://socket.io) 통신을 이용한 실시간 채팅 기능을 추후에 개발할 예정입니다. 
 
-👉 [다음페이지로 넘어가기](https://www.notion.so/0-RESTful-API-6fe9ee840d5d4a58b2aa754e1a639c6b?pvs=21)
